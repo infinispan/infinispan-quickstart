@@ -1,0 +1,59 @@
+@import url(http://fonts.googleapis.com/css?family=Istok+Web);
+
+body {
+   color: black;
+   font-family: 'Istok Web', sans-serif;
+   font-size: 13px;
+   font-weight: lighter;
+}
+
+h2 {
+   font-size: 20px;
+}
+
+#header {
+   width: 965px;
+   height: 110px;
+   background-image: url("#{resource['images:infinispan-banner.png']}");
+   background-repeat: no-repeat;
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+}
+
+input[type="text"] {
+   color: #666;
+   border: 1px solid #B9B9B9;
+   margin: 0px;
+   padding: 0px;
+   width: 250px;
+   height: 23px;
+}
+
+input[type="submit"] {
+   color: #666;
+   padding: 4px 8px 4px 8px;
+   margin: 0px 6px 0px 6px;
+   border: 1px solid #C6C6C6;
+   background-color: #F8F8F8;
+   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F8F8F8), to(#F1F1F1));
+   -webkit-border-radius: 3px;
+   -moz-border-radius: 3px;
+}
+
+input[type="text"]:hover {
+   border: 1px solid #666;
+}
+
+input[type="text"]:focus {
+   border: 1px solid #666;
+}
+
+input[type="submit"]:hover {
+   color: #333;
+   -webkit-box-shadow: 0px 0px 2px #333;
+   -moz-box-shadow: 0px 0px 2px #333;
+}
+
+.error {
+   color: #FF6666;
+}

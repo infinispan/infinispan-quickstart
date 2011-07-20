@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.infinispan.cdi.sample;
+package org.infinispan.cdi.quickstart;
 
 import javax.cache.interceptor.CacheResult;
 import javax.inject.Named;
@@ -26,6 +26,6 @@ public class GreetingService {
 
    @CacheResult(cacheName = "greeting-cache")
    public String greet(String name) {
-      return "Hello " + name + " :-)";
+      return "Hello " + name + " :)";
    }
 }

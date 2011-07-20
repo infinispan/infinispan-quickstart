@@ -13,29 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.infinispan.cdi.sample.config;
+package org.infinispan.cdi.quickstart.config;
 
-import org.infinispan.cdi.Infinispan;
-import org.infinispan.config.Configuration;
-import org.infinispan.eviction.EvictionStrategy;
-
-import javax.enterprise.inject.Produces;
+import javax.inject.Qualifier;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * @author Kevin Pollet
  */
-public class Config {
-
-   @GreetingCache
-   @Infinispan("greeting-cache")
-   @Produces
-   public Configuration greetingCache() {
-      Configuration configuration = new Configuration();
-      configuration.fluent()
-            .eviction()
-            .strategy(EvictionStrategy.FIFO)
-            .maxEntries(4);
-
-      return configuration;
-   }
+@Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Qualifier
+public @interface GreetingCache {
 }

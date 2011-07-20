@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.infinispan.cdi.sample;
+package org.infinispan.cdi.quickstart;
 
 
-import org.infinispan.cdi.sample.config.GreetingCache;
+import org.infinispan.cdi.quickstart.config.GreetingCache;
 import org.infinispan.Cache;
+import org.infinispan.eviction.EvictionStrategy;
 
 import javax.cache.interceptor.CacheKey;
 import javax.cache.interceptor.CacheRemoveAll;
@@ -45,15 +46,20 @@ public class GreetingCacheManager {
       return cache.size();
    }
 
+   public EvictionStrategy getEvictionStrategy() {
+      return cache.getConfiguration().getEvictionStrategy();
+   }
+
    public int getEvictionMaxEntries() {
       return cache.getConfiguration().getEvictionMaxEntries();
    }
 
-   public Collection<String> getCacheValues() {
-      return cache.values();
+   public String[] getCachedValues() {
+      Collection<String> cachedValues = cache.values();
+      return cachedValues.toArray(new String[cachedValues.size()]);
    }
 
    @CacheRemoveAll(cacheName = "greeting-cache")
-   public void clearGreetingCache() {
+   public void clearCache() {
    }
 }

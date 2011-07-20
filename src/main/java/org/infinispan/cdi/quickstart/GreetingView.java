@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.infinispan.cdi.sample;
+package org.infinispan.cdi.quickstart;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -31,9 +32,13 @@ public class GreetingView {
    private String name;
    private String result;
 
+   @PostConstruct
+   private void init() {
+      name = "Enter your name";
+   }
+
    public void greet() {
       result = service.greet(name);
-      name = null;
    }
 
    public String getName() {
