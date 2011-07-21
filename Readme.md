@@ -1,7 +1,12 @@
 Infinispan CDI Quickstart
 =========================
 
-To package and deploy this sample application execute the following command `mvn clean package` (for the
-deployment you need to have a running instance of JBoss AS7).
+###Deploy the application with the JBoss AS Maven plugin
 
-The application will be accessible at the following url http://localhost:8080/infinispan-cdi-quickstart-1.0.0-SNAPSHOT/
+* Package the application with `mvn clean package`
+* Deploy the application with `mvn jboss-as:deploy`
+* Enjoy :)
+
+###Run Arquillian tests in JBoss AS 7
+
+You can run the Arquillian tests with the following command `mvn clean test -Das7-managed`
