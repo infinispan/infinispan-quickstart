@@ -13,3 +13,7 @@ For further details about the CDI integration module look at https://docs.jboss.
 ###Run Arquillian tests in JBoss AS 7
 
 You can run the Arquillian tests with the following command `mvn clean test -Das7-managed`
+
+###See it in action
+
+http://quickstart1291385363.prod.rhcloud.com/infinispan-cdi-quickstart/
