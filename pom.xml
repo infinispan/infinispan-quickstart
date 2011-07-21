@@ -19,6 +19,7 @@
       <version.cdi.api>1.0-SP4</version.cdi.api>
       <version.infinispan>5.0.0.CR8</version.infinispan>
       <version.jsf.api>2.0.2-FCS</version.jsf.api>
+      <version.jboss.as>7.0.0.Final</version.jboss.as>
       <version.junit>4.8.2</version.junit>
    </properties>
 
@@ -61,36 +62,60 @@
          <artifactId>infinispan-core</artifactId>
          <version>${version.infinispan}</version>
       </dependency>
+
+      <!-- Test dependencies -->
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>${version.junit}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.arquillian.test</groupId>
+         <artifactId>arquillian-test-api</artifactId>
+         <version>${version.arquillian}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.arquillian.junit</groupId>
+         <artifactId>arquillian-junit-container</artifactId>
+         <version>${version.arquillian}</version>
+         <scope>test</scope>
+      </dependency>
    </dependencies>
    <repositories>
       <repository>
          <id>jboss</id>
          <name>JBoss Public Repository</name>
          <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-         <releases>
-            <enabled>true</enabled>
-         </releases>
-         <snapshots>
-            <enabled>false</enabled>
-         </snapshots>
       </repository>
    </repositories>
    <build>
       <plugins>
-         <!-- JBoss AS maven plugin -->
          <plugin>
             <groupId>org.jboss.as.plugins</groupId>
             <artifactId>jboss-as-maven-plugin</artifactId>
-            <version>7.0.0.Final</version>
-            <executions>
-               <execution>
-                  <phase>package</phase>
-                  <goals>
-                     <goal>deploy</goal>
-                  </goals>
-               </execution>
-            </executions>
+            <version>${version.jboss.as}</version>
          </plugin>
       </plugins>
    </build>
+   <profiles>
+      <profile>
+         <id>as7-managed</id>
+         <activation>
+            <activeByDefault>false</activeByDefault>
+            <property>
+               <name>as7-managed</name>
+            </property>
+         </activation>
+         <dependencies>
+            <dependency>
+               <groupId>org.jboss.as</groupId>
+               <artifactId>jboss-as-arquillian-container-managed</artifactId>
+               <version>${version.jboss.as}</version>
+               <scope>test</scope>
+            </dependency>
+         </dependencies>
+      </profile>
+   </profiles>
 </project>
