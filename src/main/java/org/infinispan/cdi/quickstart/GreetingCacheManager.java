@@ -35,7 +35,12 @@ import javax.inject.Named;
 import java.util.Collection;
 
 /**
+ * <p>The greeting cache manager.</p>
+ * <p>This manager is used to collect informations on the greeting cache and to
+ * clear it's content if needed.</p>
+ *
  * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
+ * @see CacheRemoveAll
  */
 @Named
 @ApplicationScoped

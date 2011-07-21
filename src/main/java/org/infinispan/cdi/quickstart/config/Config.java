@@ -32,10 +32,23 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 
 /**
+ * This is the configuration class.
+ *
  * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
  */
 public class Config {
 
+   /**
+    * <p>This producer defines the greeting cache configuration.</p>
+    * <p>This cache will have:
+    * <ul>
+    *    <li>a maximum of 4 entries</li>
+    *    <li>use the strategy FIFO for eviction</li>
+    * </ul>
+    * </p>
+    *
+    * @return the greeting cache configuration.
+    */
    @GreetingCache
    @Infinispan("greeting-cache")
    @Produces
@@ -49,6 +62,14 @@ public class Config {
       return configuration;
    }
 
+   /**
+    * <p>This producer defines the cache manager used to retrieve the
+    * greeting cache.</p>
+    * <p>The default configuration of this cache manager defines that a
+    * cache entry will have a lifespan of 60000 ms.</p>
+    *
+    * @return the specific cache manager used for the greeting cache.
+    */
    @GreetingCache
    @Produces
    @ApplicationScoped
