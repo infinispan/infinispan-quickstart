@@ -33,7 +33,7 @@ import org.jboss.shrinkwrap.resolver.api.maven.MavenDependencyResolver;
 import java.io.File;
 
 /**
- * @author Kevin Pollet
+ * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
  */
 public final class Deployments {
 

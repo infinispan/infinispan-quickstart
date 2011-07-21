@@ -28,7 +28,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * @author Kevin Pollet
+ * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
  */
 @Named
 @RequestScoped

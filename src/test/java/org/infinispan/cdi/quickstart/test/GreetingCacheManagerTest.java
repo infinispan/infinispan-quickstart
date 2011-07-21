@@ -37,7 +37,7 @@ import javax.inject.Inject;
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author Kevin Pollet
+ * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
  */
 @RunWith(Arquillian.class)
 public class GreetingCacheManagerTest {

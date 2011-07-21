@@ -29,7 +29,7 @@ import org.infinispan.eviction.EvictionStrategy;
 import javax.enterprise.inject.Produces;
 
 /**
- * @author Kevin Pollet
+ * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
  */
 public class Config {
 
