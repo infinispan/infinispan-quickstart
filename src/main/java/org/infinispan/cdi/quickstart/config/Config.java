@@ -25,7 +25,10 @@ package org.infinispan.cdi.quickstart.config;
 import org.infinispan.cdi.Infinispan;
 import org.infinispan.config.Configuration;
 import org.infinispan.eviction.EvictionStrategy;
+import org.infinispan.manager.DefaultCacheManager;
+import org.infinispan.manager.EmbeddedCacheManager;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 
 /**
@@ -44,5 +47,17 @@ public class Config {
             .maxEntries(4);
 
       return configuration;
+   }
+
+   @GreetingCache
+   @Produces
+   @ApplicationScoped
+   public EmbeddedCacheManager specificCacheManager() {
+      Configuration defaultConfiguration = new Configuration();
+      defaultConfiguration.fluent()
+            .expiration()
+            .lifespan(60000l);
+
+      return new DefaultCacheManager(defaultConfiguration);
    }
 }

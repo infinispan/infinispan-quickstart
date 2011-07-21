@@ -63,13 +63,13 @@ public class GreetingServiceTest {
 
       assertEquals("Hello Pete :)", greet);
       assertEquals(1, greetingCache.size());
-      assertTrue( greetingCache.values().contains("Hello Pete :)"));
+      assertTrue(greetingCache.values().contains("Hello Pete :)"));
 
       greet = greetingService.greet("Manik");
 
       assertEquals("Hello Manik :)", greet);
       assertEquals(2, greetingCache.size());
-      assertTrue( greetingCache.values().contains("Hello Manik :)"));
+      assertTrue(greetingCache.values().contains("Hello Manik :)"));
 
       greetingService.greet("Pete");
 

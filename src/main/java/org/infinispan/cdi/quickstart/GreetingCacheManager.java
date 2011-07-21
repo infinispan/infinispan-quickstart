@@ -23,8 +23,8 @@
 package org.infinispan.cdi.quickstart;
 
 
-import org.infinispan.cdi.quickstart.config.GreetingCache;
 import org.infinispan.Cache;
+import org.infinispan.cdi.quickstart.config.GreetingCache;
 import org.infinispan.eviction.EvictionStrategy;
 
 import javax.cache.interceptor.CacheKey;
@@ -59,6 +59,10 @@ public class GreetingCacheManager {
 
    public int getEvictionMaxEntries() {
       return cache.getConfiguration().getEvictionMaxEntries();
+   }
+
+   public long getExpirationLifespan() {
+      return cache.getConfiguration().getExpirationLifespan();
    }
 
    public String[] getCachedValues() {
