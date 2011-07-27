@@ -39,6 +39,8 @@
       <version.arquillian>1.0.0.CR1</version.arquillian>
       <version.cache.api>0.2.20110718.jboss</version.cache.api>
       <version.cdi.api>1.0-SP4</version.cdi.api>
+      <version.compiler.source>1.6</version.compiler.source>
+      <version.compiler.target>1.6</version.compiler.target>
       <version.infinispan>5.0.0.CR8</version.infinispan>
       <version.jsf.api>2.0.2-FCS</version.jsf.api>
       <version.jboss.as>7.0.0.Final</version.jboss.as>
@@ -115,6 +117,15 @@
    <build>
       <finalName>${project.artifactId}</finalName>
       <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>2.3.2</version>
+            <configuration>
+               <source>${version.compiler.source}</source>
+               <target>${version.compiler.target}</target>
+            </configuration>
+         </plugin>
          <plugin>
             <groupId>org.jboss.as.plugins</groupId>
             <artifactId>jboss-as-maven-plugin</artifactId>
