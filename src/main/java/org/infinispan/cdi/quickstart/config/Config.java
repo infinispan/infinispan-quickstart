@@ -40,6 +40,7 @@ public class Config {
 
    /**
     * <p>This producer defines the greeting cache configuration.</p>
+    *
     * <p>This cache will have:
     * <ul>
     *    <li>a maximum of 4 entries</li>
@@ -53,20 +54,15 @@ public class Config {
    @Infinispan("greeting-cache")
    @Produces
    public Configuration greetingCache() {
-      Configuration configuration = new Configuration();
-      configuration.fluent()
-            .eviction()
-            .strategy(EvictionStrategy.FIFO)
-            .maxEntries(4);
-
-      return configuration;
+      return new Configuration().fluent()
+            .eviction().strategy(EvictionStrategy.FIFO).maxEntries(4)
+            .build();
    }
 
    /**
-    * <p>This producer defines the cache manager used to retrieve the
-    * greeting cache.</p>
-    * <p>The default configuration of this cache manager defines that a
-    * cache entry will have a lifespan of 60000 ms.</p>
+    * <p>This producer defines the cache manager used to retrieve the greeting cache.</p>
+    *
+    * <p>The default configuration of this cache manager defines that a cache entry will have a lifespan of 60000 ms.</p>
     *
     * @return the specific cache manager used for the greeting cache.
     */
@@ -74,11 +70,8 @@ public class Config {
    @Produces
    @ApplicationScoped
    public EmbeddedCacheManager specificCacheManager() {
-      Configuration defaultConfiguration = new Configuration();
-      defaultConfiguration.fluent()
-            .expiration()
-            .lifespan(60000l);
-
-      return new DefaultCacheManager(defaultConfiguration);
+      return new DefaultCacheManager(new Configuration().fluent()
+                                           .expiration().lifespan(60000l)
+                                           .build());
    }
 }
