@@ -25,12 +25,10 @@ package org.infinispan.cdi.quickstart;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 /**
  * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
  */
-@Named
 @RequestScoped
 public class GreetingView {
 
