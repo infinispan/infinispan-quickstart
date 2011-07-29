@@ -146,9 +146,6 @@
          <id>as7-managed</id>
          <activation>
             <activeByDefault>false</activeByDefault>
-            <property>
-               <name>as7-managed</name>
-            </property>
          </activation>
          <dependencies>
             <dependency>
