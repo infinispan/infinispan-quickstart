@@ -6,8 +6,7 @@ import org.infinispan.manager.*;
 
 public class DefaultCacheQuickstart {
    public static void main(String args[]) throws Exception {
-      EmbeddedCacheManager manager = new DefaultCacheManager();
-      Cache<Object, Object> cache = manager.getCache();
+	   Cache<Object, Object> cache = new DefaultCacheManager().getCache();
       
       // Add a entry
       cache.put("key", "value");
