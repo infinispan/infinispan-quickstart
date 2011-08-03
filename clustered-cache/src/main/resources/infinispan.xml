@@ -18,8 +18,11 @@
    xmlns="urn:infinispan:config:5.0">
     
    <global>
-       <!-- not specifying details here will force default transport -->
-      <transport />
+      <transport transportClass="org.infinispan.remoting.transport.jgroups.JGroupsTransport">
+         <properties>
+            <property name="configurationFile" value="jgroups.xml"/>
+         </properties>
+      </transport>
    </global>
     
    <default>
