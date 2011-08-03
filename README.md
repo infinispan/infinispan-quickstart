@@ -1,9 +1,16 @@
-Infinispan Quickstarts
+Infinispan Quickstarts 
 ======================
 
-This repository contains a set of quickstart examples for use with Infinispan.
+Quickstarts (or examples, or samples) for Infinispan. There are a number of rules for quickstarts:
 
-You can find tutorials to accompany these quickstarts:
+* Each quickstart should have a unique name, this enables a user to quickly identify each quickstart
+* A quickstart should have a simple build that the user can quickly understand. If using maven it should:
+  1. Not inherit from another POM
+* The quickstart should be importable into JBoss Tools and deployable there
+* The quickstart should be explained in detail in the associated user guide, including how to deploy
 
-* embedded-cache <https://docs.jboss.org/author/display/ISPN/Getting+Started+Guide#GettingStartedGuide-CreatinganembeddedcacheinJavaSE>
-* clustered-cache https://docs.jboss.org/author/display/ISPN/Getting+Started+Guide#GettingStartedGuide-SettingupanInfinispanCluster
+You can find the documentation at <https://docs.jboss.org/author/display/ISPN>.
+
+If you add a quickstart, don't forget to update `dist/src/main/assembly/README.md`.
+
+The 'dist' folder contains Maven scripts to build a zip of the quickstarts.
