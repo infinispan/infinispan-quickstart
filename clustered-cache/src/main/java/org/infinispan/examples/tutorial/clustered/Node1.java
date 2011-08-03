@@ -1,5 +1,7 @@
 package org.infinispan.examples.tutorial.clustered;
 
+import java.io.IOException;
+
 import org.infinispan.Cache;
 
 public class Node1 extends AbstractNode {
@@ -8,7 +10,7 @@ public class Node1 extends AbstractNode {
       new Node1().run();
    }
    
-   public Node1() {
+   public Node1() throws IOException {
       super(1);
    }
 

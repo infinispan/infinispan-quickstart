@@ -1,27 +1,44 @@
 package org.infinispan.examples.tutorial.clustered;
 
-import org.infinispan.config.Configuration;
-import org.infinispan.config.GlobalConfiguration;
-import org.infinispan.examples.tutorial.clustered.util.ClusterValidation;
-import org.infinispan.manager.DefaultCacheManager;
-import org.infinispan.manager.EmbeddedCacheManager;
+import static org.infinispan.config.Configuration.CacheMode.*;
 
+import java.io.IOException;
+
+import org.infinispan.config.*;
+import org.infinispan.examples.tutorial.clustered.util.ClusterValidation;
+import org.infinispan.manager.*;
+
+@SuppressWarnings("unused")
 public abstract class AbstractNode {
+   
+   private static EmbeddedCacheManager createCacheManagerProgramatically() {
+      return new DefaultCacheManager(
+         GlobalConfiguration.getClusteredDefault().fluent()
+            .transport()
+               .addProperty("configurationFile", "jgroups.xml")
+            .build(), 
+         new Configuration().fluent()
+            .clustering()
+               .mode(REPL_SYNC)
+            .build()
+         );
+   }
+   
+   
+   private static EmbeddedCacheManager createCacheManagerFromXml() throws IOException {
+      return new DefaultCacheManager("infinispan.xml");
+   }
    
    public static final int CLUSTER_SIZE = 2;
 
    private final EmbeddedCacheManager cacheManager;
    private final int nodeId;
    
-   public AbstractNode(int nodeId) {
+   public AbstractNode(int nodeId) throws IOException {
       this.nodeId = nodeId;
-      // Create the configuration, and set to replication
-      GlobalConfiguration gc = GlobalConfiguration.getClusteredDefault();
-      Configuration c = new Configuration();
-      c.setCacheMode(Configuration.CacheMode.REPL_SYNC);
-
-      // Create the cache manager and get a handle to the cache we will use
-      this.cacheManager = new DefaultCacheManager(gc, c);
+      this.cacheManager = createCacheManagerProgramatically();
+      // Uncomment to create cache from XML
+      // this.cacheManager = createCacheManagerFromXml();
    }
    
    protected EmbeddedCacheManager getCacheManager() {

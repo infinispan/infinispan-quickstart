@@ -22,12 +22,12 @@ public class LoggingListener {
 
    @CacheEntryCreated
    public void observeAdd(CacheEntryCreatedEvent<?, ?> event) {
-      log.info("Cache entry with key {0} added in cache {1}", event.getKey(), event.getCache());
+      log.infof("Cache entry with key {0} added in cache {1}", event.getKey(), event.getCache());
    }
 
    @CacheEntryRemoved
    public void observeRemove(CacheEntryRemovedEvent<?, ?> event) {
-      log.info("Cache entry with key {0} removed in cache {1}", event.getKey(), event.getCache());
+      log.infof("Cache entry with key {0} removed in cache {1}", event.getKey(), event.getCache());
    }
 
 }
