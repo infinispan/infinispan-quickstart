@@ -1,4 +1,4 @@
-package org.infinispan.examples.tutorial.clustered.util;
+package org.infinispan.quickstart.clusteredcache.util;
 
 import org.infinispan.Cache;
 import org.infinispan.manager.EmbeddedCacheManager;
@@ -38,7 +38,7 @@ public class ClusterValidation {
     */
    public static boolean waitForClusterToForm(
 	 EmbeddedCacheManager cacheManager, int nodeId, int clusterSize) {
-      return new ClusterValidation(cacheManager.getCache(KEY), nodeId,
+      return new ClusterValidation(cacheManager.getCache(), nodeId,
 	    clusterSize).checkReplicationSeveralTimes() > 0;
    }
    

@@ -1,4 +1,4 @@
-package org.infinispan.examples.tutorial.clustered;
+package org.infinispan.quickstart.clusteredcache.util;
 
 import org.infinispan.notifications.Listener;
 import org.infinispan.notifications.cachelistener.annotation.CacheEntryCreated;
@@ -22,12 +22,12 @@ public class LoggingListener {
 
    @CacheEntryCreated
    public void observeAdd(CacheEntryCreatedEvent<?, ?> event) {
-      log.infof("Cache entry with key {0} added in cache {1}", event.getKey(), event.getCache());
+      log.infof("Cache entry with key %s added in cache %s", event.getKey(), event.getCache());
    }
 
    @CacheEntryRemoved
    public void observeRemove(CacheEntryRemovedEvent<?, ?> event) {
-      log.infof("Cache entry with key {0} removed in cache {1}", event.getKey(), event.getCache());
+      log.infof("Cache entry with key %s removed in cache %s", event.getKey(), event.getCache());
    }
 
 }

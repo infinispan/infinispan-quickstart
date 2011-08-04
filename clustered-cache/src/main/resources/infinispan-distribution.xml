@@ -24,11 +24,13 @@
          </properties>
       </transport>
    </global>
-    
+   
    <default>
       <!-- Configure a synchronous replication cache -->
-      <clustering mode="replication">
+      <clustering mode="distribution">
          <sync/>
+         <hash numOwners="2"/>
       </clustering>
    </default>
+   
 </infinispan>

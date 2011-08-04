@@ -1,8 +1,7 @@
-package org.infinispan.examples.tutorial.clustered;
-
-import java.io.IOException;
+package org.infinispan.quickstart.clusteredcache.distribution;
 
 import org.infinispan.Cache;
+import org.infinispan.quickstart.clusteredcache.util.LoggingListener;
 
 
 public class Node0 extends AbstractNode {
@@ -11,13 +10,10 @@ public class Node0 extends AbstractNode {
       new Node0().run();
    }
    
-   public Node0() throws IOException {
-      super(0);
-   }   
    public void run() {
       Cache<String, String> cache = getCacheManager().getCache("Demo");
 
-      // Add a listener so that we can see the put from Node1
+      // Add a listener so that we can see the puts to this node
       cache.addListener(new LoggingListener());
 
       waitForClusterToForm();
