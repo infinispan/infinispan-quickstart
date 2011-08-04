@@ -10,6 +10,6 @@ public class CustomCacheQuickstart {
       manager.defineConfiguration("custom-cache", new Configuration().fluent()
     		  .eviction().strategy(LIRS).maxEntries(10)
 			  .build());
-      Cache<?, ?> c = manager.getCache("custom-cache");
+      Cache<Object, Object> c = manager.getCache("custom-cache");
    }
 }
