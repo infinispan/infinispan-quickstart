@@ -44,12 +44,12 @@
       <h2><h:outputText value="Greeting form"/></h2>
       <h:messages id="errors" errorClass="error"/>
       <br/>
-      <h:inputText id="name" value="#{greetingView.name}" label="Name" required="true"/>
-      <h:commandButton value="Greet" action="#{greetingView.greet}"/>
+      <h:inputText id="name" value="#{greetingController.name}" label="Name" required="true"/>
+      <h:commandButton value="Greet" action="#{greetingController.greet}"/>
       <h:commandButton value="Clear Cache" action="#{greetingCacheManager.clearCache}"/>
       <br/>
       <br/>
-      <h:outputText value="#{greetingView.result}"/>
+      <h:outputText value="#{greetingController.result}"/>
       <br/>
 
       <h2><h:outputText value="Cache informations"/></h2>

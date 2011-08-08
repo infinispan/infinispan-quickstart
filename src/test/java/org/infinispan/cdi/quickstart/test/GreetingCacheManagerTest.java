@@ -52,20 +52,37 @@ public class GreetingCacheManagerTest {
    private GreetingService greetingService;
 
    @Inject
-   private GreetingCacheManager cacheManager;
+   private GreetingCacheManager greetingCacheManager;
 
    @Test
-   public void testGreetingCacheManager() {
-      assertEquals("greeting-cache", cacheManager.getCacheName());
-      assertEquals(EvictionStrategy.FIFO, cacheManager.getEvictionStrategy());
-      assertEquals(4, cacheManager.getEvictionMaxEntries());
+   public void testGreetingCacheConfiguration() {
+      // Cache name
+      assertEquals("greeting-cache", greetingCacheManager.getCacheName());
 
+      // Eviction
+      assertEquals(4, greetingCacheManager.getEvictionMaxEntries());
+      assertEquals(EvictionStrategy.FIFO, greetingCacheManager.getEvictionStrategy());
+
+      // Lifespan
+      assertEquals(60000l, greetingCacheManager.getExpirationLifespan());
+   }
+
+   @Test
+   public void testGreetingCacheCachedValues() {
       greetingService.greet("Pete");
 
-      assertEquals(1, cacheManager.getNumberOfEntries());
+      assertEquals(1, greetingCacheManager.getCachedValues().length);
+      assertEquals("Hello Pete :)", greetingCacheManager.getCachedValues()[0]);
+   }
 
-      cacheManager.clearCache();
+   @Test
+   public void testClearGreetingCache() {
+      greetingService.greet("Pete");
 
-      assertEquals(0, cacheManager.getNumberOfEntries());
+      assertEquals(1, greetingCacheManager.getNumberOfEntries());
+
+      greetingCacheManager.clearCache();
+
+      assertEquals(0, greetingCacheManager.getNumberOfEntries());
    }
 }

@@ -29,6 +29,7 @@ import org.infinispan.cdi.quickstart.test.util.Deployments;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -57,17 +58,26 @@ public class GreetingServiceTest {
    @Inject
    private GreetingService greetingService;
 
-   @Test
-   public void testGreetingServiceCache() {
-      String greet = greetingService.greet("Pete");
+   @Before
+   public void init() {
+      greetingCache.clear();
+      assertEquals(0, greetingCache.size());
+   }
 
-      assertEquals("Hello Pete :)", greet);
+   @Test
+   public void testGreetMethod() {
+      assertEquals("Hello Pete :)", greetingService.greet("Pete"));
+   }
+
+   @Test
+   public void testGreetMethodCache() {
+      greetingService.greet("Pete");
+
       assertEquals(1, greetingCache.size());
       assertTrue(greetingCache.values().contains("Hello Pete :)"));
 
-      greet = greetingService.greet("Manik");
+      greetingService.greet("Manik");
 
-      assertEquals("Hello Manik :)", greet);
       assertEquals(2, greetingCache.size());
       assertTrue(greetingCache.values().contains("Hello Manik :)"));
 

@@ -30,7 +30,7 @@ import javax.inject.Inject;
  * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
  */
 @RequestScoped
-public class GreetingView {
+public class GreetingController {
 
    @Inject
    private GreetingService service;
