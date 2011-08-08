@@ -25,7 +25,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
 
-   <!-- Enable JCache interceptors -->
+   <!-- Enable JCACHE interceptors -->
    <interceptors>
       <class>org.infinispan.cdi.interceptor.CacheResultInterceptor</class>
       <class>org.infinispan.cdi.interceptor.CacheRemoveEntryInterceptor</class>
