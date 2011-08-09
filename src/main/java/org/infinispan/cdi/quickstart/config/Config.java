@@ -23,12 +23,10 @@
 package org.infinispan.cdi.quickstart.config;
 
 import org.infinispan.cdi.Infinispan;
+import org.infinispan.cdi.OverrideDefault;
 import org.infinispan.config.Configuration;
 import org.infinispan.eviction.EvictionStrategy;
-import org.infinispan.manager.DefaultCacheManager;
-import org.infinispan.manager.EmbeddedCacheManager;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 
 /**
@@ -60,18 +58,15 @@ public class Config {
    }
 
    /**
-    * <p>This producer defines the cache manager used to retrieve the greeting cache.</p>
+    * <p>This producer overrides the default cache configuration used by the default cache manager.</p>
     *
-    * <p>The default configuration of this cache manager defines that a cache entry will have a lifespan of 60000 ms.</p>
-    *
-    * @return the specific cache manager used for the greeting cache.
+    * <p>The default cache configuration defines that a cache entry will have a lifespan of 60000 ms.</p>
     */
-   @GreetingCache
+   @OverrideDefault
    @Produces
-   @ApplicationScoped
-   public EmbeddedCacheManager specificCacheManager() {
-      return new DefaultCacheManager(new Configuration().fluent()
-                                           .expiration().lifespan(60000l)
-                                           .build());
+   public Configuration defaultCacheConfiguration() {
+      return new Configuration().fluent()
+            .expiration().lifespan(60000l)
+            .build();
    }
 }
