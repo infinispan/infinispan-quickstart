@@ -114,6 +114,13 @@
          <url>http://repository.jboss.org/nexus/content/groups/public/</url>
       </repository>
    </repositories>
+   <pluginRepositories>
+      <pluginRepository>
+         <id>jboss-plugins</id>
+         <name>JBoss Public Repository</name>
+         <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+      </pluginRepository>
+   </pluginRepositories>
    <build>
       <finalName>${project.artifactId}</finalName>
       <plugins>
@@ -124,6 +131,42 @@
             <configuration>
                <source>${version.compiler.source}</source>
                <target>${version.compiler.target}</target>
+            </configuration>
+         </plugin>
+         <plugin>
+            <groupId>org.jboss.maven.plugins</groupId>
+            <artifactId>maven-injection-plugin</artifactId>
+            <version>1.0.2</version>
+            <executions>
+               <execution>
+                  <id>bytecode-injection</id>
+                  <phase>compile</phase>
+                  <goals>
+                     <goal>bytecode</goal>
+                  </goals>
+               </execution>
+            </executions>
+            <configuration>
+               <bytecodeInjections>
+                  <bytecodeInjection>
+                     <expression>${project.version}</expression>
+                     <targetMembers>
+                        <methodBodyReturn>
+                           <className>org.infinispan.cdi.quickstart.Version</className>
+                           <methodName>getProjectVersion</methodName>
+                        </methodBodyReturn>
+                     </targetMembers>
+                  </bytecodeInjection>
+                  <bytecodeInjection>
+                     <expression>${version.infinispan}</expression>
+                     <targetMembers>
+                        <methodBodyReturn>
+                           <className>org.infinispan.cdi.quickstart.Version</className>
+                           <methodName>getInfinispanVersion</methodName>
+                        </methodBodyReturn>
+                     </targetMembers>
+                  </bytecodeInjection>
+               </bytecodeInjections>
             </configuration>
          </plugin>
          <plugin>
