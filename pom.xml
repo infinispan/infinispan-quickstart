@@ -11,6 +11,7 @@
       <module>embedded-cache</module>
       <module>clustered-cache</module>
       <module>jboss-as7</module>
+      <module>cdi</module>
    </modules>
    
 </project>
