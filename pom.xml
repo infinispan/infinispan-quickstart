@@ -7,10 +7,10 @@
    <packaging>pom</packaging>
    <name>Infinispan Quickstart Parent</name>
    
-   
    <modules>
       <module>embedded-cache</module>
       <module>clustered-cache</module>
+      <module>jboss-as7</module>
    </modules>
    
 </project>
