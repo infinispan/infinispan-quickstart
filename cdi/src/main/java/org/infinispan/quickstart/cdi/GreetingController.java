@@ -20,24 +20,47 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.infinispan.cdi.quickstart;
+package org.infinispan.quickstart.cdi;
 
-import javax.cache.interceptor.CacheResult;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+
 
 /**
- * <p>This is the Greeting Service class.</p>
- *
- * <p>Each call to the {@link GreetingService#greet(String)} method will be cached in the greeting-cache (in this case
- * the {@linkplain javax.cache.interceptor.CacheKey CacheKey} will be the name). If this method has been already called
- * with the same name the cached value will be returned and this method will not be called.</p>
- *
  * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
- * @see CacheResult
  */
-public class GreetingService {
+@RequestScoped
+public class GreetingController {
 
-   @CacheResult(cacheName = "greeting-cache")
-   public String greet(String name) {
-      return "Hello " + name + " :)";
+   @Inject
+   private GreetingService service;
+   private String name;
+   private String result;
+
+   @PostConstruct
+   private void init() {
+      name = "Enter your name";
+   }
+
+   public void greet() {
+      result = service.greet(name);
+   }
+
+   public String getName() {
+      return name;
+   }
+
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   public String getResult() {
+      return result;
+   }
+
+   public String getInfinispanVersion() {
+      return org.infinispan.Version.VERSION;
    }
 }

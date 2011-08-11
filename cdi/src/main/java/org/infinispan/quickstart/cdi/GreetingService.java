@@ -20,6 +20,24 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-@Named package org.infinispan.cdi.quickstart;
+package org.infinispan.quickstart.cdi;
 
-import javax.inject.Named;
+import javax.cache.interceptor.CacheResult;
+
+/**
+ * <p>This is the Greeting Service class.</p>
+ *
+ * <p>Each call to the {@link GreetingService#greet(String)} method will be cached in the greeting-cache (in this case
+ * the {@linkplain javax.cache.interceptor.CacheKey CacheKey} will be the name). If this method has been already called
+ * with the same name the cached value will be returned and this method will not be called.</p>
+ *
+ * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
+ * @see CacheResult
+ */
+public class GreetingService {
+
+   @CacheResult(cacheName = "greeting-cache")
+   public String greet(String name) {
+      return "Hello " + name + " :)";
+   }
+}

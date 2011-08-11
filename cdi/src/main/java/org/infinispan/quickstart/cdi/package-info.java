@@ -20,22 +20,6 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.infinispan.cdi.quickstart;
+@Named package org.infinispan.quickstart.cdi;
 
-/**
- * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
- */
-public final class Version {
-
-   // disable instantiations
-   private Version() {
-   }
-
-   public static String getProjectVersion() {
-      return "PROJECT_VERSION";
-   }
-
-   public static String getInfinispanVersion() {
-      return "INFINISPAN_VERSION";
-   }
-}
+import javax.inject.Named;

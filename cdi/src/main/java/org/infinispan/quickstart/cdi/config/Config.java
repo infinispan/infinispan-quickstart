@@ -20,7 +20,7 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.infinispan.cdi.quickstart.config;
+package org.infinispan.quickstart.cdi.config;
 
 import org.infinispan.cdi.Infinispan;
 import org.infinispan.cdi.OverrideDefault;

@@ -20,12 +20,12 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.infinispan.cdi.quickstart.test;
+package org.infinispan.quickstart.cdi.test;
 
 import org.infinispan.Cache;
-import org.infinispan.cdi.quickstart.GreetingService;
-import org.infinispan.cdi.quickstart.config.GreetingCache;
-import org.infinispan.cdi.quickstart.test.util.Deployments;
+import org.infinispan.quickstart.cdi.GreetingService;
+import org.infinispan.quickstart.cdi.config.GreetingCache;
+import org.infinispan.quickstart.cdi.test.util.Deployments;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.spec.WebArchive;

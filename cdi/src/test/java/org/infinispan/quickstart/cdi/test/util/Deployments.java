@@ -20,10 +20,10 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.infinispan.cdi.quickstart.test.util;
+package org.infinispan.quickstart.cdi.test.util;
 
-import org.infinispan.cdi.quickstart.GreetingService;
-import org.infinispan.cdi.quickstart.config.Config;
+import org.infinispan.quickstart.cdi.GreetingService;
+import org.infinispan.quickstart.cdi.config.Config;
 import org.jboss.shrinkwrap.api.GenericArchive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;

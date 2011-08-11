@@ -20,12 +20,12 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.infinispan.cdi.quickstart;
+package org.infinispan.quickstart.cdi;
 
 
 import org.infinispan.Cache;
-import org.infinispan.cdi.quickstart.config.GreetingCache;
 import org.infinispan.eviction.EvictionStrategy;
+import org.infinispan.quickstart.cdi.config.GreetingCache;
 
 import javax.cache.interceptor.CacheKey;
 import javax.cache.interceptor.CacheRemoveAll;
