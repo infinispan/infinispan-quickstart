@@ -18,7 +18,7 @@
    xmlns="urn:infinispan:config:5.0">
     
    <global>
-      <transport transportClass="org.infinispan.remoting.transport.jgroups.JGroupsTransport">
+      <transport>
          <properties>
             <property name="configurationFile" value="jgroups.xml"/>
          </properties>
