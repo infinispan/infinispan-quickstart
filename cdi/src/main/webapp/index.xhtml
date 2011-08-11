@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ JBoss, Home of Professional Open Source
+  ~ Copyright 2011 Red Hat Inc. and/or its affiliates and other
+  ~ contributors as indicated by the @author tags. All rights reserved.
+  ~ See the copyright.txt in the distribution for a full listing of
+  ~ individual contributors.
+  ~
+  ~ This is free software; you can redistribute it and/or modify it
+  ~ under the terms of the GNU Lesser General Public License as
+  ~ published by the Free Software Foundation; either version 2.1 of
+  ~ the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public
+  ~ License along with this software; if not, write to the Free
+  ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+  ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+   <title>Infinispan CDI Quickstart</title>
+   <h:outputScript library="js" name="jquery-1.6.2.min.js"/>
+   <h:outputStylesheet library="css" name="styles.css"/>
+   <script type="text/javascript">
+      $(window).load(function() {
+         $('#name').bind('focus', function() {
+            $(this).attr('value', '');
+         });
+      });
+   </script>
+</h:head>
+<h:body>
+   <div id="header"/>
+
+   <h:form prependId="false">
+      <h2><h:outputText value="Greeting form"/></h2>
+      <h:messages id="errors" errorClass="error"/>
+      <br/>
+      <h:inputText id="name" value="#{greetingController.name}" label="Name" required="true"/>
+      <h:commandButton value="Greet" action="#{greetingController.greet}"/>
+      <h:commandButton value="Clear Cache" action="#{greetingCacheManager.clearCache}"/>
+      <br/>
+      <br/>
+      <h:outputText value="#{greetingController.result}"/>
+      <br/>
+
+      <h2><h:outputText value="Cache informations"/></h2>
+      <h:outputText value="Cache name: #{greetingCacheManager.cacheName}"/>
+      <br/>
+      <h:outputText value="Eviction strategy: #{greetingCacheManager.evictionStrategy}"/>
+      <br/>
+      <h:outputText value="Max entries: #{greetingCacheManager.evictionMaxEntries}"/>
+      <br/>
+      <h:outputText value="Expiration lifespan: #{greetingCacheManager.expirationLifespan} ms"/>
+      <br/>
+
+      <h2>
+         <h:outputText id="cachedvaluestitle" value="Cached values - #{greetingCacheManager.numberOfEntries}"/>
+         <h:commandButton value="Refresh">
+            <f:ajax render="cachedvaluestitle cachedvalues" event="click"/>
+         </h:commandButton>
+      </h2>
+      <ul>
+         <h:dataTable id="cachedvalues" value="#{greetingCacheManager.cachedValues}" var="oneValue">
+            <h:column>
+               <li><h:outputText value="#{oneValue}"/></li>
+            </h:column>
+         </h:dataTable>
+      </ul>
+   </h:form>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <h:outputText value="Project version: #{greetingController.projectVersion}"/>
+   <br/>
+   <h:outputText value="Infinispan version: #{greetingController.infinispanVersion()}"/>
+</h:body>
+</html>

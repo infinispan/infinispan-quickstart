@@ -1,0 +1,215 @@
+<!--
+  JBoss, Home of Professional Open Source
+  Copyright 2011 Red Hat Inc. and/or its affiliates and other
+  contributors as indicated by the @author tags. All rights reserved.
+  See the copyright.txt in the distribution for a full listing of
+  individual contributors.
+
+  This is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Lesser General Public License as
+  published by the Free Software Foundation; either version 2.1 of
+  the License, or (at your option) any later version.
+
+  This software is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this software; if not, write to the Free
+  Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+  02110-1301 USA, or see the FSF site: http://www.fsf.org.
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+   <modelVersion>4.0.0</modelVersion>
+
+   <groupId>org.infinispan</groupId>
+   <artifactId>infinispan-cdi-quickstart</artifactId>
+   <version>5.0.0-SNAPSHOT</version>
+   <packaging>war</packaging>
+
+   <name>Infinispan CDI Quickstart</name>
+   <description>Infinispan CDI Quickstart Application</description>
+
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <version.arquillian>1.0.0.CR1</version.arquillian>
+      <version.cache.api>0.2.20110727.jboss</version.cache.api>
+      <version.cdi.api>1.0-SP4</version.cdi.api>
+      <version.compiler.source>1.6</version.compiler.source>
+      <version.compiler.target>1.6</version.compiler.target>
+      <version.infinispan>5.0.0.FINAL</version.infinispan>
+      <version.jsf.api>2.0.2-FCS</version.jsf.api>
+      <version.jboss.as>7.0.0.Final</version.jboss.as>
+      <version.junit>4.8.2</version.junit>
+   </properties>
+
+   <developers>
+      <developer>
+         <id>kevinpollet</id>
+         <name>Kevin Pollet</name>
+         <email>pollet.kevin@gmail.com</email>
+      </developer>
+   </developers>
+
+   <dependencies>
+      <!-- API -->
+      <dependency>
+         <groupId>javax.faces</groupId>
+         <artifactId>jsf-api</artifactId>
+         <version>${version.jsf.api}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>javax.enterprise</groupId>
+         <artifactId>cdi-api</artifactId>
+         <version>${version.cdi.api}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>javax.cache</groupId>
+         <artifactId>cache-api</artifactId>
+         <version>${version.cache.api}</version>
+      </dependency>
+
+      <!-- Infinispan dependencies -->
+      <dependency>
+         <groupId>org.infinispan</groupId>
+         <artifactId>infinispan-cdi</artifactId>
+         <version>${version.infinispan}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.infinispan</groupId>
+         <artifactId>infinispan-core</artifactId>
+         <version>${version.infinispan}</version>
+      </dependency>
+
+      <!-- Test dependencies -->
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>${version.junit}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.arquillian.test</groupId>
+         <artifactId>arquillian-test-api</artifactId>
+         <version>${version.arquillian}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.arquillian.junit</groupId>
+         <artifactId>arquillian-junit-container</artifactId>
+         <version>${version.arquillian}</version>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
+   <repositories>
+      <repository>
+         <id>jboss</id>
+         <name>JBoss Public Repository</name>
+         <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+      </repository>
+   </repositories>
+   <pluginRepositories>
+      <pluginRepository>
+         <id>jboss-plugins</id>
+         <name>JBoss Public Repository</name>
+         <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+      </pluginRepository>
+   </pluginRepositories>
+   <build>
+      <finalName>${project.artifactId}</finalName>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>2.3.2</version>
+            <configuration>
+               <source>${version.compiler.source}</source>
+               <target>${version.compiler.target}</target>
+            </configuration>
+         </plugin>
+         <plugin>
+            <groupId>org.jboss.maven.plugins</groupId>
+            <artifactId>maven-injection-plugin</artifactId>
+            <version>1.0.2</version>
+            <executions>
+               <execution>
+                  <id>bytecode-injection</id>
+                  <phase>compile</phase>
+                  <goals>
+                     <goal>bytecode</goal>
+                  </goals>
+               </execution>
+            </executions>
+            <configuration>
+               <bytecodeInjections>
+                  <bytecodeInjection>
+                     <expression>${project.version}</expression>
+                     <targetMembers>
+                        <methodBodyReturn>
+                           <className>org.infinispan.cdi.quickstart.Version</className>
+                           <methodName>getProjectVersion</methodName>
+                        </methodBodyReturn>
+                     </targetMembers>
+                  </bytecodeInjection>
+                  <bytecodeInjection>
+                     <expression>${version.infinispan}</expression>
+                     <targetMembers>
+                        <methodBodyReturn>
+                           <className>org.infinispan.cdi.quickstart.Version</className>
+                           <methodName>getInfinispanVersion</methodName>
+                        </methodBodyReturn>
+                     </targetMembers>
+                  </bytecodeInjection>
+               </bytecodeInjections>
+            </configuration>
+         </plugin>
+         <plugin>
+            <groupId>org.jboss.as.plugins</groupId>
+            <artifactId>jboss-as-maven-plugin</artifactId>
+            <version>${version.jboss.as}</version>
+         </plugin>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.8.1</version>
+            <configuration>
+               <skipTests>true</skipTests>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+   <profiles>
+      <profile>
+         <id>as7-managed</id>
+         <activation>
+            <activeByDefault>false</activeByDefault>
+         </activation>
+         <dependencies>
+            <dependency>
+               <groupId>org.jboss.as</groupId>
+               <artifactId>jboss-as-arquillian-container-managed</artifactId>
+               <version>${version.jboss.as}</version>
+               <scope>test</scope>
+            </dependency>
+         </dependencies>
+         <build>
+            <plugins>
+               <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-surefire-plugin</artifactId>
+                  <version>2.8.1</version>
+                  <configuration>
+                     <skipTests>false</skipTests>
+                  </configuration>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+   </profiles>
+</project>
