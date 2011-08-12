@@ -11,8 +11,13 @@ h2 {
    font-size: 20px;
 }
 
-#header {
+#wrapper {
+   height: 100%;
    width: 965px;
+   position: relative;
+}
+
+#header {
    height: 110px;
    background-image: url("#{resource['images:infinispan-banner.png']}");
    background-repeat: no-repeat;
@@ -20,7 +25,19 @@ h2 {
    -moz-border-radius: 4px;
 }
 
-input[type="text"] {
+#content {
+  width: 100%;
+}
+
+#footer {
+  height: 45px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  text-align: right;
+}
+
+input[type="text"]  {
    color: #666;
    border: 1px solid #B9B9B9;
    margin: 0px;
@@ -29,23 +46,18 @@ input[type="text"] {
    height: 23px;
 }
 
+input[type="text"]:hover, input[type="text"]:focus {
+   border: 1px solid #666;
+}
+
 input[type="submit"] {
    color: #666;
    padding: 4px 8px 4px 8px;
-   margin: 0px 6px 0px 6px;
+   margin-left: 12px;
    border: 1px solid #C6C6C6;
    background-color: #F8F8F8;
-   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F8F8F8), to(#F1F1F1));
    -webkit-border-radius: 3px;
    -moz-border-radius: 3px;
-}
-
-input[type="text"]:hover {
-   border: 1px solid #666;
-}
-
-input[type="text"]:focus {
-   border: 1px solid #666;
 }
 
 input[type="submit"]:hover {
