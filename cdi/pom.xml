@@ -109,7 +109,9 @@
    </dependencies>
 
    <build>
-      <finalName>${project.artifactId}</finalName>
+      <!-- Set the name of the war, used as the context root when the app
+         is deployed -->
+      <finalName>infinispan-cdi</finalName>
       <plugins>
          <plugin>
             <artifactId>maven-war-plugin</artifactId>
