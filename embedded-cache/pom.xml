@@ -5,6 +5,9 @@
    <artifactId>embedded-cache-quickstart</artifactId>
    <version>1.0.0-SNAPSHOT</version>
 
+   <name>Infinispan Embedded Cache Quickstart</name>
+   <description>This quickstart demonstrates embedded cache running on a single node in Java SE.</description>
+
    <url>http://jboss.org/infinispan</url>
    <licenses>
       <license>

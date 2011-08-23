@@ -6,6 +6,9 @@
    <version>5.0.0-SNAPSHOT</version>
    <packaging>war</packaging>
 
+   <name>Infinispan JBoss AS 7 Quickstart</name>
+   <description>This quickstart demonstrates how create a simple, clustered, cache on JBoss AS 7.</description>
+
    <url>http://jboss.org/infinispan</url>
    <licenses>
       <license>
