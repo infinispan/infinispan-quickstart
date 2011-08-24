@@ -27,6 +27,8 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import static org.infinispan.Version.VERSION;
+
 
 /**
  * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
@@ -61,6 +63,6 @@ public class GreetingController {
    }
 
    public String getInfinispanVersion() {
-      return org.infinispan.Version.VERSION;
+      return VERSION;
    }
 }

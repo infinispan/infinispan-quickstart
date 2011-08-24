@@ -51,7 +51,6 @@ public final class Deployments {
                         .loadReposFromPom("pom.xml")
                         .artifact("javax.cache:cache-api")
                         .artifact("org.infinispan:infinispan-cdi")
-                        .artifact("org.infinispan:infinispan-core")
                         .resolveAs(GenericArchive.class)
             );
    }

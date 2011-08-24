@@ -6,7 +6,7 @@ For further details about the CDI integration module look at https://docs.jboss.
 ###Deploy the application with the JBoss AS Maven plugin
 
 * Execute the following command `mvn clean package jboss-as:deploy`
-* Open http://localhost:8080/infinispan-cdi-quickstart/
+* Open http://localhost:8080/infinispan-cdi/
 * Enjoy :)
 
 ###Run Arquillian tests in JBoss AS 7
