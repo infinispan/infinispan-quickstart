@@ -15,10 +15,10 @@ import org.infinispan.manager.CacheContainer;
 @Singleton
 @Startup
 public class Resources {
-   
-   @Resource(lookup="java:jboss/infinispan/demo")
+
+   @Resource(lookup="java:jboss/infinispan/jboss-as7-quickstart")
    private CacheContainer container;
-   
+
    @Inject @New
    private LoggingListener loggingListener;
    
