@@ -116,6 +116,13 @@
             <groupId>org.jboss.as.plugins</groupId>
             <artifactId>jboss-as-maven-plugin</artifactId>
             <version>7.0.1.Final</version>
+            <configuration>
+               <address>subsystem=infinispan,cache-container=jboss-as7-quickstart</address>
+               <properties>
+                  <default-cache>jboss-as7-quickstart-cache</default-cache>
+                  <cache>!![{"mode" => "LOCAL", "name" => "jboss-as7-quickstart-cache"}]</cache>
+               </properties>
+            </configuration>
          </plugin>
 
          <!-- Compiler plugin enforces Java 1.6 compatibility and activates
