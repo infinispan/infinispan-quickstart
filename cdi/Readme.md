@@ -1,7 +1,12 @@
 Infinispan CDI Quickstart
 =========================
 
-For further details about the CDI integration module look at https://docs.jboss.org/author/display/ISPN/CDI+Support
+This quickstart demonstrates the Infinispan *CDI Support*.
+
+The example can be deployed using Maven from the command line or from Eclipse using
+JBoss Tools.
+
+For more information refer to the CDI Support [documentation](https://docs.jboss.org/author/display/ISPN/CDI+Support).
 
 ###Deploy the application with the JBoss AS Maven plugin
 
