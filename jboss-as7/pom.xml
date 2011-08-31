@@ -50,16 +50,19 @@
    </dependencyManagement>
 
    <dependencies>
-      <dependency>
-         <groupId>org.infinispan</groupId>
-         <artifactId>infinispan-cdi</artifactId>
-         <version>${infinispan.version}</version>
-      </dependency>
+
       <dependency>
          <groupId>org.infinispan</groupId>
          <artifactId>infinispan-core</artifactId>
          <version>${infinispan.version}</version>
          <scope>provided</scope>
+      </dependency>
+      
+      <!-- Infinispan dependency -->
+      <dependency>
+         <groupId>org.infinispan</groupId>
+         <artifactId>infinispan-cdi</artifactId>
+         <version>${infinispan.version}</version>
       </dependency>
       
       <!-- Import the CDI API, we use provided scope as the API is included 
