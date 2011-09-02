@@ -1,7 +1,7 @@
 package org.infinispan.quickstart.jbossas7;
 
 import org.infinispan.cdi.OverrideDefault;
-import org.infinispan.manager.CacheContainer;
+import org.infinispan.manager.EmbeddedCacheManager;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -13,8 +13,8 @@ public class Resources {
 
    @Produces
    @OverrideDefault
-   @Resource(lookup="java:jboss/infinispan/demo")
-   private CacheContainer container;
+   @Resource(lookup="java:jboss/infinispan/jboss-as7-quickstart")
+   private EmbeddedCacheManager container;
 
    @Inject @New
    private LoggingListener loggingListener;
