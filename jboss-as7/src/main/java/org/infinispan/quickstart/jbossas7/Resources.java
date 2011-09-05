@@ -1,26 +1,19 @@
 package org.infinispan.quickstart.jbossas7;
 
+import javax.annotation.Resource;
+import javax.ejb.Singleton;
+import javax.enterprise.inject.Produces;
+
 import org.infinispan.cdi.OverrideDefault;
 import org.infinispan.manager.EmbeddedCacheManager;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.enterprise.inject.New;
-import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
-
+@Singleton
 public class Resources {
 
+   @SuppressWarnings("unused")
    @Produces
    @OverrideDefault
    @Resource(lookup="java:jboss/infinispan/jboss-as7-quickstart")
-   private EmbeddedCacheManager container;
-
-   @Inject @New
-   private LoggingListener loggingListener;
+   private static EmbeddedCacheManager container;
    
-   @PostConstruct
-   void startup() {
-      container.getCache().addListener(loggingListener);
-   }
 }
