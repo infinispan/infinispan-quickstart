@@ -22,11 +22,13 @@
  */
 package org.infinispan.quickstart.embeddedcache;
 
-import static java.util.concurrent.TimeUnit.*;
-import static org.infinispan.quickstart.embeddedcache.util.Assert.*;
+import org.infinispan.Cache;
+import org.infinispan.manager.DefaultCacheManager;
 
-import org.infinispan.*;
-import org.infinispan.manager.*;
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.infinispan.quickstart.embeddedcache.util.Assert.assertEqual;
+import static org.infinispan.quickstart.embeddedcache.util.Assert.assertFalse;
+import static org.infinispan.quickstart.embeddedcache.util.Assert.assertTrue;
 
 public class DefaultCacheQuickstart {
    public static void main(String args[]) throws Exception {

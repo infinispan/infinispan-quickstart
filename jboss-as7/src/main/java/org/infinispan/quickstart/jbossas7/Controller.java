@@ -22,16 +22,15 @@
  */
 package org.infinispan.quickstart.jbossas7;
 
-import java.io.Serializable;
-import java.util.Collections;
-import java.util.List;
+import org.infinispan.AdvancedCache;
+import org.infinispan.config.Configuration.CacheMode;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.infinispan.AdvancedCache;
-import org.infinispan.config.Configuration.CacheMode;
+import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
 
 @SessionScoped
 @Named

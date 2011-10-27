@@ -22,13 +22,15 @@
  */
 package org.infinispan.quickstart.clusteredcache.distribution;
 
-import static org.infinispan.config.Configuration.CacheMode.*;
+import org.infinispan.config.Configuration;
+import org.infinispan.config.GlobalConfiguration;
+import org.infinispan.manager.DefaultCacheManager;
+import org.infinispan.manager.EmbeddedCacheManager;
+import org.infinispan.quickstart.clusteredcache.util.ClusterValidation;
 
 import java.io.IOException;
 
-import org.infinispan.config.*;
-import org.infinispan.manager.*;
-import org.infinispan.quickstart.clusteredcache.util.ClusterValidation;
+import static org.infinispan.config.Configuration.CacheMode.DIST_SYNC;
 
 @SuppressWarnings("unused")
 public abstract class AbstractNode {

@@ -22,11 +22,12 @@
  */
 package org.infinispan.quickstart.embeddedcache;
 
-import static org.infinispan.eviction.EvictionStrategy.*;
+import org.infinispan.Cache;
+import org.infinispan.config.Configuration;
+import org.infinispan.manager.DefaultCacheManager;
+import org.infinispan.manager.EmbeddedCacheManager;
 
-import org.infinispan.*;
-import org.infinispan.config.*;
-import org.infinispan.manager.*;
+import static org.infinispan.eviction.EvictionStrategy.LIRS;
 
 public class CustomCacheQuickstart {
    public static void main(String args[]) throws Exception {

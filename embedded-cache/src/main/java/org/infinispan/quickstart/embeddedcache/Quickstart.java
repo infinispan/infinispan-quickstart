@@ -22,8 +22,8 @@
  */
 package org.infinispan.quickstart.embeddedcache;
 
-import org.infinispan.manager.*;
-import org.infinispan.*;
+import org.infinispan.Cache;
+import org.infinispan.manager.DefaultCacheManager;
 
 public class Quickstart {
    public static void main(String args[]) throws Exception {
