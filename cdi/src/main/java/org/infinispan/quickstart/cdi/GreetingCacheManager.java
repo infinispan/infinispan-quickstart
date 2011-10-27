@@ -31,6 +31,7 @@ import javax.cache.interceptor.CacheKey;
 import javax.cache.interceptor.CacheRemoveAll;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.Collection;
 
 /**
@@ -41,6 +42,7 @@ import java.util.Collection;
  * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
  * @see CacheRemoveAll
  */
+@Named
 @ApplicationScoped
 public class GreetingCacheManager {
 

@@ -20,34 +20,21 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.infinispan.quickstart.clusteredcache.replication;
+package org.infinispan.quickstart.embeddedcache;
 
 import org.infinispan.Cache;
-import org.infinispan.quickstart.clusteredcache.util.LoggingListener;
-import org.infinispan.util.logging.Log;
-import org.infinispan.util.logging.LogFactory;
+import org.infinispan.config.Configuration;
+import org.infinispan.manager.DefaultCacheManager;
+import org.infinispan.manager.EmbeddedCacheManager;
 
-public class Node1 extends AbstractNode {
+import static org.infinispan.eviction.EvictionStrategy.LIRS;
 
-   private Log log = LogFactory.getLog(LoggingListener.class);
-   
-   public static void main(String[] args) throws Exception {
-      new Node1().run();
+public class CustomCacheQuickstart {
+   public static void main(String args[]) throws Exception {
+      EmbeddedCacheManager manager = new DefaultCacheManager();
+      manager.defineConfiguration("custom-cache", new Configuration().fluent()
+    		  .eviction().strategy(LIRS).maxEntries(10)
+			  .build());
+      Cache<Object, Object> c = manager.getCache("custom-cache");
    }
-
-   public void run() {
-      Cache<String, String> cache = getCacheManager().getCache("Demo");
-
-      waitForClusterToForm();
-      
-      log.info("About to put key, value into cache on node " + getNodeId());
-      // Put some information in the cache that we can display on the other node
-      cache.put("key", "value");
-   }
-   
-   @Override
-   protected int getNodeId() {
-      return 1;
-   }
-
 }
