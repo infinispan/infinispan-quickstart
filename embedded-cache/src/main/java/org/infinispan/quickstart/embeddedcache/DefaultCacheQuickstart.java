@@ -1,5 +1,7 @@
+package org.infinispan.quickstart.embeddedcache;
+
 import static java.util.concurrent.TimeUnit.*;
-import static util.Assert.*;
+import static org.infinispan.quickstart.embeddedcache.util.Assert.*;
 
 import org.infinispan.*;
 import org.infinispan.manager.*;

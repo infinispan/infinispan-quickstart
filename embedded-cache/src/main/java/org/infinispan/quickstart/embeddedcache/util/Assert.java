@@ -1,4 +1,4 @@
-package util;
+package org.infinispan.quickstart.embeddedcache.util;
 
 public class Assert {
 

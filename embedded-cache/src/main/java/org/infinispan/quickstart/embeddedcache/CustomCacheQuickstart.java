@@ -1,3 +1,5 @@
+package org.infinispan.quickstart.embeddedcache;
+
 import static org.infinispan.eviction.EvictionStrategy.*;
 
 import org.infinispan.*;

@@ -1,3 +1,5 @@
+package org.infinispan.quickstart.embeddedcache;
+
 import org.infinispan.manager.*;
 import org.infinispan.*;
 
