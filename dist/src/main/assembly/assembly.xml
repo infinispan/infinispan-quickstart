@@ -21,11 +21,15 @@
          <directory>${project.basedir}/..</directory>
          <outputDirectory>/</outputDirectory>
          <excludes>
-            <exclude>dist</exclude>
+            <exclude>.gitignore</exclude>
+            <exclude>dist/</exclude>
             <exclude>**/target/**</exclude>
             <exclude>**/.project</exclude>
             <exclude>**/.settings/**</exclude>
             <exclude>**/.classpath</exclude>
+            <exclude>**/*.iml</exclude>
+            <exclude>**/*.ipr</exclude>
+            <exclude>**/*.iws</exclude>
             <exclude>**/README.md</exclude>
          </excludes>
       </fileSet>
