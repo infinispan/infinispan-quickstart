@@ -31,6 +31,7 @@ import static org.infinispan.quickstart.embeddedcache.util.Assert.assertFalse;
 import static org.infinispan.quickstart.embeddedcache.util.Assert.assertTrue;
 
 public class DefaultCacheQuickstart {
+
    public static void main(String args[]) throws Exception {
 	   Cache<Object, Object> cache = new DefaultCacheManager().getCache();
       
@@ -60,6 +61,6 @@ public class DefaultCacheQuickstart {
       assertTrue(cache.containsKey("key"));
       Thread.sleep(10000);
       assertFalse(cache.containsKey("key"));
-      
    }
+
 }

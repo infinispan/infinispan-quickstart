@@ -22,8 +22,9 @@
  */
 package org.infinispan.quickstart.clusteredcache.replication;
 
-import org.infinispan.config.Configuration;
-import org.infinispan.config.GlobalConfiguration;
+import org.infinispan.configuration.cache.CacheMode;
+import org.infinispan.configuration.cache.ConfigurationBuilder;
+import org.infinispan.configuration.global.GlobalConfigurationBuilder;
 import org.infinispan.manager.DefaultCacheManager;
 import org.infinispan.manager.EmbeddedCacheManager;
 import org.infinispan.quickstart.clusteredcache.util.ClusterValidation;
@@ -37,20 +38,15 @@ public abstract class AbstractNode {
    
    private static EmbeddedCacheManager createCacheManagerProgramatically() {
       return new DefaultCacheManager(
-         GlobalConfiguration.getClusteredDefault()
-            .fluent()
-               .transport()
-                  .addProperty("configurationFile", "jgroups.xml")
-               .build(), 
-         new Configuration()
-            .fluent()
-               .clustering()
-                  .mode(REPL_SYNC)
-               .build()
-         );
+            GlobalConfigurationBuilder.defaultClusteredBuilder()
+                  .transport().addProperty("configurationFile", "jgroups.xml")
+                  .build(),
+            new ConfigurationBuilder()
+                  .clustering().cacheMode(CacheMode.REPL_SYNC)
+                  .build()
+      );
    }
-   
-   
+
    private static EmbeddedCacheManager createCacheManagerFromXml() throws IOException {
       return new DefaultCacheManager("infinispan-replication.xml");
    }

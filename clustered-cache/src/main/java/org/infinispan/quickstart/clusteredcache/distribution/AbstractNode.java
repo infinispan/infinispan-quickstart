@@ -22,35 +22,31 @@
  */
 package org.infinispan.quickstart.clusteredcache.distribution;
 
-import org.infinispan.config.Configuration;
-import org.infinispan.config.GlobalConfiguration;
+import org.infinispan.configuration.cache.CacheMode;
+import org.infinispan.configuration.cache.ConfigurationBuilder;
+import org.infinispan.configuration.global.GlobalConfigurationBuilder;
 import org.infinispan.manager.DefaultCacheManager;
 import org.infinispan.manager.EmbeddedCacheManager;
 import org.infinispan.quickstart.clusteredcache.util.ClusterValidation;
 
 import java.io.IOException;
 
-import static org.infinispan.config.Configuration.CacheMode.DIST_SYNC;
-
 @SuppressWarnings("unused")
 public abstract class AbstractNode {
    
    private static EmbeddedCacheManager createCacheManagerProgramatically() {
       return new DefaultCacheManager(
-         GlobalConfiguration.getClusteredDefault().fluent()
-            .transport()
-               .addProperty("configurationFile", "jgroups.xml")
-            .build(), 
-         new Configuration().fluent()
-            .clustering()
-               .mode(DIST_SYNC)
-               .hash()
-                  .numOwners(2)
-            .build()
-         );
+            GlobalConfigurationBuilder.defaultClusteredBuilder()
+                  .transport().addProperty("configurationFile", "jgroups.xml")
+                  .build(),
+            new ConfigurationBuilder()
+                  .clustering()
+                     .cacheMode(CacheMode.DIST_SYNC)
+                     .hash().numOwners(2)
+                  .build()
+      );
    }
-   
-   
+
    private static EmbeddedCacheManager createCacheManagerFromXml() throws IOException {
       return new DefaultCacheManager("infinispan-distribution.xml");
    }

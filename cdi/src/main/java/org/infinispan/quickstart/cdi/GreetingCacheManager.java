@@ -27,8 +27,8 @@ import org.infinispan.Cache;
 import org.infinispan.eviction.EvictionStrategy;
 import org.infinispan.quickstart.cdi.config.GreetingCache;
 
-import javax.cache.interceptor.CacheKey;
-import javax.cache.interceptor.CacheRemoveAll;
+import javax.cache.annotation.CacheKey;
+import javax.cache.annotation.CacheRemoveAll;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -59,15 +59,15 @@ public class GreetingCacheManager {
    }
 
    public EvictionStrategy getEvictionStrategy() {
-      return cache.getConfiguration().getEvictionStrategy();
+      return cache.getCacheConfiguration().eviction().strategy();
    }
 
    public int getEvictionMaxEntries() {
-      return cache.getConfiguration().getEvictionMaxEntries();
+      return cache.getCacheConfiguration().eviction().maxEntries();
    }
 
    public long getExpirationLifespan() {
-      return cache.getConfiguration().getExpirationLifespan();
+      return cache.getCacheConfiguration().expiration().lifespan();
    }
 
    public String[] getCachedValues() {
@@ -78,4 +78,5 @@ public class GreetingCacheManager {
    @CacheRemoveAll(cacheName = "greeting-cache")
    public void clearCache() {
    }
+
 }

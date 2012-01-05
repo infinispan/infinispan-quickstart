@@ -8,6 +8,7 @@ target/
 *.iws
 *.ipr
 *.iml
+.idea
 
 # Ignore Eclipse files
 .classpath

@@ -23,7 +23,7 @@
 package org.infinispan.quickstart.jbossas7;
 
 import org.infinispan.AdvancedCache;
-import org.infinispan.config.Configuration.CacheMode;
+import org.infinispan.configuration.cache.CacheMode;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -37,7 +37,7 @@ import java.util.List;
 public class Controller implements Serializable {
    
    @Inject
-   AdvancedCache<Object, Object> cache;
+   transient AdvancedCache<Object, Object> cache;
    
    private transient Object key;
    private transient Object value;
@@ -76,7 +76,7 @@ public class Controller implements Serializable {
    }
    
    public List<?> locate() {
-      if (cache.getConfiguration().getCacheMode() != CacheMode.LOCAL) {
+      if (cache.getCacheConfiguration().clustering().cacheMode() != CacheMode.LOCAL) {
          return cache.getDistributionManager().locate(key);
       } else {
          return Collections.singletonList("local");
@@ -84,7 +84,7 @@ public class Controller implements Serializable {
    }
    
    public String getSelf() {
-      if (cache.getConfiguration().getCacheMode() != CacheMode.LOCAL)
+      if (cache.getCacheConfiguration().clustering().cacheMode() != CacheMode.LOCAL)
          return cache.getCacheManager().getAddress().toString();
       else
          return "local cache";

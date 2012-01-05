@@ -22,7 +22,6 @@
  */
 package org.infinispan.quickstart.jbossas7;
 
-import org.infinispan.cdi.OverrideDefault;
 import org.infinispan.manager.EmbeddedCacheManager;
 
 import javax.annotation.Resource;
@@ -34,7 +33,6 @@ public class Resources {
 
    @SuppressWarnings("unused")
    @Produces
-   @OverrideDefault
    @Resource(lookup="java:jboss/infinispan/jboss-as7-quickstart")
    private static EmbeddedCacheManager container;
    

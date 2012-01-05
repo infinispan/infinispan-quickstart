@@ -22,9 +22,9 @@
  */
 package org.infinispan.quickstart.cdi.config;
 
-import org.infinispan.cdi.Infinispan;
-import org.infinispan.cdi.OverrideDefault;
-import org.infinispan.config.Configuration;
+import org.infinispan.cdi.ConfigureCache;
+import org.infinispan.configuration.cache.Configuration;
+import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.eviction.EvictionStrategy;
 
 import javax.enterprise.inject.Produces;
@@ -33,6 +33,7 @@ import javax.enterprise.inject.Produces;
  * This is the configuration class.
  *
  * @author Kevin Pollet <pollet.kevin@gmail.com> (C) 2011
+ * @author Galder Zamarreño
  */
 public class Config {
 
@@ -49,10 +50,10 @@ public class Config {
     * @return the greeting cache configuration.
     */
    @GreetingCache
-   @Infinispan("greeting-cache")
+   @ConfigureCache("greeting-cache")
    @Produces
    public Configuration greetingCache() {
-      return new Configuration().fluent()
+      return new ConfigurationBuilder()
             .eviction().strategy(EvictionStrategy.FIFO).maxEntries(4)
             .build();
    }
@@ -62,11 +63,11 @@ public class Config {
     *
     * <p>The default cache configuration defines that a cache entry will have a lifespan of 60000 ms.</p>
     */
-   @OverrideDefault
    @Produces
    public Configuration defaultCacheConfiguration() {
-      return new Configuration().fluent()
+      return new ConfigurationBuilder()
             .expiration().lifespan(60000l)
             .build();
    }
+
 }
