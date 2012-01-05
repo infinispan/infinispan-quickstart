@@ -44,7 +44,8 @@ public class LoggingListener {
 
    @CacheEntryCreated
    public void observeAdd(CacheEntryCreatedEvent<?, ?> event) {
-      log.infof("Cache entry with key %s added in cache %s", event.getKey(), event.getCache());
+      if (!event.isPre()) // So that message is only logged after operation succeeded
+         log.infof("Cache entry with key %s added in cache %s", event.getKey(), event.getCache());
    }
 
    @CacheEntryRemoved

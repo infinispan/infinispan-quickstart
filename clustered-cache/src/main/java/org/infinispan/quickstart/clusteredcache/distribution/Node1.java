@@ -38,7 +38,6 @@ public class Node1 extends AbstractNode {
       cache.addListener(new LoggingListener());
 
       waitForClusterToForm();
-      
    }
    
    @Override
