@@ -33,7 +33,7 @@ public class Resources {
 
    @SuppressWarnings("unused")
    @Produces
-   @Resource(lookup="java:jboss/infinispan/jboss-as7-quickstart")
+   @Resource(lookup="java:jboss/infinispan/container/jboss-as7-quickstart")
    private static EmbeddedCacheManager container;
    
 }
