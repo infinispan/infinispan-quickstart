@@ -27,9 +27,10 @@ refer to the [Getting Started Guide](https://docs.jboss.org/author/display/ISPN/
 
 ### Create a distributed data-grid using domain mode
 
-1) Edit `domain/configuration/domain.xml` and add a cache
+1) Edit `domain/configuration/domain.xml` and add a this cache container configuration to the `full-ha` profile:
 
     <cache-container name="jboss-as7-quickstart" default-cache="jboss-as7-quickstart-cache">
+        <transport lock-timeout="60000"/>
         <distributed-cache owners="1" mode="SYNC" name="jboss-as7-quickstart-cache" start="EAGER"/>
     </cache-container>
 
