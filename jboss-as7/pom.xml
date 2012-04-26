@@ -48,7 +48,7 @@
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
       <version.jboss.javaee.web>2.0.0.Final</version.jboss.javaee.web>
-      <infinispan.version>5.1.0.CR2</infinispan.version>
+      <infinispan.version>5.1.4.CR1</infinispan.version>
    </properties>
    
    <dependencyManagement>
@@ -144,7 +144,7 @@
          <plugin>
             <groupId>org.jboss.as.plugins</groupId>
             <artifactId>jboss-as-maven-plugin</artifactId>
-            <version>7.1.0.Beta1b</version>
+            <version>7.1.1.Final</version>
          </plugin>
 
          <!-- Compiler plugin enforces Java 1.6 compatibility and activates
