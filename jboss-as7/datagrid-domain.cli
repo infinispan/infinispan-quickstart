@@ -1,0 +1,10 @@
+connect
+/profile=full-ha/subsystem=infinispan/cache-container=jboss-as7-quickstart/:add(default-cache=jboss-as7-quickstart-cache)
+/profile=full-ha/subsystem=infinispan/cache-container=jboss-as7-quickstart/distributed-cache=jboss-as7-quickstart-cache/:add(mode=SYNC,start=EAGER,owners=1)
+/profile=full-ha/subsystem=infinispan/cache-container=jboss-as7-quickstart/transport=TRANSPORT/:add(lock-timeout=60000)
+/host=master/server-config=server-one/:write-attribute(name=auto-start,value=false)
+/host=master/server-config=server-two/:write-attribute(name=auto-start,value=false)
+/host=master/server-config=server-three/:write-attribute(name=auto-start,value=true)
+/host=master/server-config=server-four/:add(group=other-server-group,socket-binding-port-offset=350,auto-start=true)
+/profile=full-ha/subsystem=messaging/hornetq-server=default/:write-attribute(name=cluster-password,value=mypassword)
+deploy target/infinispan-jboss-as7.war  --server-groups=other-server-group

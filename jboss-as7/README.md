@@ -1,7 +1,7 @@
 Infinispan JBoss AS 7 Quickstart
 ================================
 
-This quickstart demonstrates how create a simple, clustered, cache on *JBoss AS 7*.
+This quickstart demonstrates how create a simple, clustered, cache on *JBoss AS 7.1*.
 
 The example can be deployed using Maven from the command line or from Eclipse using
 JBoss Tools.
@@ -36,6 +36,10 @@ refer to the [Getting Started Guide](https://docs.jboss.org/author/display/ISPN/
 
 2) Ensure that you have an ha group starting, edit domain/configuration/host.xml, copy server-three to create a server-four, and change the port offset to `350`. Set both server-three and server-four to `auto-start="true"` and server-one and server-two to `auto-start="false"`.
 
+3) Change 'cluster-password' value in "urn:jboss:domain:messaging:1.1" subsystem to something else. For example:
+
+    <cluster-password>new-password</cluster-password>
+
 3) Start the domain by running `bin/domain.sh`
 
 4) Package the app by running `mvn clean package`
@@ -50,3 +54,13 @@ refer to the [Getting Started Guide](https://docs.jboss.org/author/display/ISPN/
     * `mvn -Pstandalone-local jboss-as:add-resource` for a local cache
     * `mvn -Pdomain-distributed jboss-as:add-resource` for a distributed cache
 * To deploy the application use `mvn clean package jboss-as:deploy`
+
+### Quick testing data-grid in domain mode
+
+This quick start ships a .cli script in the root folder that automatically applies the AS7 container changes required to get the domain part of the quick start running. To run this script:
+
+* Start the domain in admin-only mode:
+    [JBOSS_HOME]/bin/domain.sh --admin-only
+* From the quickstart root folder, execute:
+    [JBOSS_HOME]/bin/jboss-cli.sh --file=infinispan-as7.cli
+* Restart the domain
