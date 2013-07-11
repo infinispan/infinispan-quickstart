@@ -12,6 +12,7 @@
       <module>clustered-cache</module>
       <module>jboss-as7</module>
       <module>cdi</module>
+      <module>rapid-stock-market</module>
    </modules>
    
 </project>
