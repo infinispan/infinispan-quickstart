@@ -40,7 +40,7 @@
       <maven.compiler.target>1.6</maven.compiler.target>
       <maven.compiler.source>1.6</maven.compiler.source>
 
-      <infinispan.version>6.0.0-SNAPSHOT</infinispan.version>
+      <infinispan.version>6.0.0.Final</infinispan.version>
       <commons.httpclient.version>3.1</commons.httpclient.version>
    </properties>
 
@@ -146,6 +146,18 @@
          <id>prepare-server-module</id>
          <build>
             <plugins>
+               <!-- this disables the shade plugin for this profile. the problem is the dependencies are put it
+               in the jar and the JBossAS crashes with them (not sure why). Disabling this plugin solves the problem
+               and the quickstart works fine.-->
+               <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-shade-plugin</artifactId>
+                  <executions>
+                     <execution>
+                        <phase>none</phase>
+                     </execution>
+                  </executions>
+               </plugin>
                <plugin>
                   <artifactId>maven-compiler-plugin</artifactId>
                   <version>${compiler.plugin.version}</version>

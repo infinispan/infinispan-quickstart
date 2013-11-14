@@ -31,8 +31,6 @@ import org.infinispan.quickstart.clusteredcache.util.ClusterValidation;
 
 import java.io.IOException;
 
-import static org.infinispan.config.Configuration.CacheMode.REPL_SYNC;
-
 @SuppressWarnings("unused")
 public abstract class AbstractNode {
    
