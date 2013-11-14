@@ -56,8 +56,8 @@
       <!-- Versions -->
       <version.jboss.javaee.web>2.0.0.Final</version.jboss.javaee.web>
       <version.arquillian>1.0.0.CR5</version.arquillian>
-      <version.javax.cache.api>0.4</version.javax.cache.api>
-      <version.infinispan>5.1.0.CR2</version.infinispan>
+      <version.javax.cache.api>1.0.0-PFD</version.javax.cache.api>
+      <version.infinispan>6.0.1-SNAPSHOT</version.infinispan>
       <version.junit>4.8.2</version.junit>
    </properties>
 
@@ -118,6 +118,11 @@
          <artifactId>infinispan-cdi</artifactId>
          <version>${version.infinispan}</version>
       </dependency>
+       <dependency>
+           <groupId>org.infinispan</groupId>
+           <artifactId>infinispan-jcache</artifactId>
+           <version>${version.infinispan}</version>
+       </dependency>
 
       <!-- Test dependencies -->
       <dependency>
@@ -161,7 +166,7 @@
          <plugin>
             <groupId>org.jboss.as.plugins</groupId>
             <artifactId>jboss-as-maven-plugin</artifactId>
-            <version>7.1.0.Beta1b</version>
+            <version>7.3.Final</version>
          </plugin>
 
          <!-- Compiler plugin enforces Java 1.6 compatibility and activates 

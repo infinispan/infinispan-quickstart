@@ -43,7 +43,7 @@ public class Config {
     * <p>This cache will have:
     * <ul>
     *    <li>a maximum of 4 entries</li>
-    *    <li>use the strategy FIFO for eviction</li>
+    *    <li>use the strategy LRU for eviction</li>
     * </ul>
     * </p>
     *
@@ -54,7 +54,7 @@ public class Config {
    @Produces
    public Configuration greetingCache() {
       return new ConfigurationBuilder()
-            .eviction().strategy(EvictionStrategy.FIFO).maxEntries(4)
+            .eviction().strategy(EvictionStrategy.LRU).maxEntries(4)
             .build();
    }
 

@@ -33,7 +33,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import javax.cache.interceptor.CacheKey;
+import javax.cache.annotation.CacheKey;
 import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
