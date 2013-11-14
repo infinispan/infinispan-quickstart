@@ -17,7 +17,7 @@ refer to the [Getting Started Guide](https://docs.jboss.org/author/display/ISPN/
         <local-cache name="jboss-as7-quickstart-cache"/>
     </cache-container>
 
-2) Start the server by runnig `bin/standalone.sh`
+2) Start the server by running `bin/standalone.sh`
 
 3) Package the app by running `mvn clean package`
 
@@ -59,8 +59,6 @@ refer to the [Getting Started Guide](https://docs.jboss.org/author/display/ISPN/
 
 This quick start ships a .cli script in the root folder that automatically applies the AS7 container changes required to get the domain part of the quick start running. To run this script:
 
-* Start the domain in admin-only mode:
-    [JBOSS_HOME]/bin/domain.sh --admin-only
-* From the quickstart root folder, execute:
-    [JBOSS_HOME]/bin/jboss-cli.sh --file=infinispan-as7.cli
+* Start the domain in admin-only mode: `${JBOSS_HOME}/bin/domain.sh --admin-only`
+* From the quickstart root folder, execute: `${JBOSS_HOME}/bin/jboss-cli.sh --file=datagrid-domain.cli`
 * Restart the domain
