@@ -24,11 +24,14 @@ package org.infinispan.quickstart.clusteredcache.util;
 
 import org.infinispan.notifications.Listener;
 import org.infinispan.notifications.cachelistener.annotation.CacheEntryCreated;
+import org.infinispan.notifications.cachelistener.annotation.CacheEntryModified;
 import org.infinispan.notifications.cachelistener.annotation.CacheEntryRemoved;
+import org.infinispan.notifications.cachelistener.annotation.TopologyChanged;
 import org.infinispan.notifications.cachelistener.event.CacheEntryCreatedEvent;
+import org.infinispan.notifications.cachelistener.event.CacheEntryModifiedEvent;
 import org.infinispan.notifications.cachelistener.event.CacheEntryRemovedEvent;
-import org.infinispan.util.logging.Log;
-import org.infinispan.util.logging.LogFactory;
+import org.infinispan.notifications.cachelistener.event.TopologyChangedEvent;
+import org.jboss.logging.Logger;
 
 /**
  * An Infinispan listener that simply logs cache entries being created and
@@ -40,17 +43,37 @@ import org.infinispan.util.logging.LogFactory;
 @Listener
 public class LoggingListener {
 
-   private Log log = LogFactory.getLog(LoggingListener.class);
+   private Logger log = Logger.getLogger(LoggingListener.class);
 
    @CacheEntryCreated
-   public void observeAdd(CacheEntryCreatedEvent<?, ?> event) {
-      if (!event.isPre()) // So that message is only logged after operation succeeded
-         log.infof("Cache entry with key %s added in cache %s", event.getKey(), event.getCache());
+   public void observeAdd(CacheEntryCreatedEvent<String, String> event) {
+      if (event.isPre())
+         return;
+
+      log.infof("Cache entry %s = %s added in cache %s", event.getKey(), event.getValue(), event.getCache());
+   }
+
+   @CacheEntryModified
+   public void observeUpdate(CacheEntryModifiedEvent<String, String> event) {
+      if (event.isPre())
+         return;
+
+      log.infof("Cache entry %s = %s modified in cache %s", event.getKey(), event.getValue(), event.getCache());
    }
 
    @CacheEntryRemoved
-   public void observeRemove(CacheEntryRemovedEvent<?, ?> event) {
-      log.infof("Cache entry with key %s removed in cache %s", event.getKey(), event.getCache());
+   public void observeRemove(CacheEntryRemovedEvent<String, String> event) {
+      if (event.isPre())
+         return;
+
+      log.infof("Cache entry %s removed in cache %s", event.getKey(), event.getCache());
    }
 
+   @TopologyChanged
+   public void observeTopologyChange(TopologyChangedEvent<String, String> event) {
+      if (event.isPre())
+         return;
+
+      log.infof("Cache %s topology changed, new membership is %s", event.getCache().getName(), event.getConsistentHashAtEnd().getMembers());
+   }
 }

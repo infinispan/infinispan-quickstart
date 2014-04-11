@@ -22,24 +22,34 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 <infinispan
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="urn:infinispan:config:6.0 http://www.infinispan.org/schemas/infinispan-config-6.0.xsd"
-        xmlns="urn:infinispan:config:6.0">
-    
-   <global>
-      <transport>
-         <properties>
-            <property name="configurationFile" value="jgroups.xml"/>
-         </properties>
-      </transport>
-   </global>
-   
-   <default>
-      <!-- Configure a synchronous replication cache -->
-      <clustering mode="distribution">
-         <sync/>
-         <hash numOwners="2"/>
-      </clustering>
-   </default>
-   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:infinispan:config:6.0 http://www.infinispan.org/schemas/infinispan-config-6.0.xsd"
+    xmlns="urn:infinispan:config:6.0">
+  <global>
+    <transport nodeName="${nodeName}">
+      <properties>
+        <property name="configurationFile" value="jgroups.xml"/>
+      </properties>
+    </transport>
+  </global>
+
+  <default>
+    <!-- Configure a synchronous replication cache -->
+    <clustering mode="replication">
+      <sync/>
+    </clustering>
+  </default>
+
+  <namedCache name="repl">
+    <!-- Use the configuration of the default cache as it is -->
+  </namedCache>
+
+  <namedCache name="dist">
+    <!-- Configure a synchronous distribution cache -->
+    <clustering mode="distribution">
+      <sync/>
+      <hash numOwners="2"/>
+    </clustering>
+  </namedCache>
+
 </infinispan>
