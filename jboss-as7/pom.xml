@@ -48,7 +48,7 @@
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
       <version.jboss.javaee.web>2.0.0.Final</version.jboss.javaee.web>
-      <infinispan.version>6.0.0.Final</infinispan.version>
+      <infinispan.version>6.0.2.Final</infinispan.version>
    </properties>
    
    <dependencyManagement>
