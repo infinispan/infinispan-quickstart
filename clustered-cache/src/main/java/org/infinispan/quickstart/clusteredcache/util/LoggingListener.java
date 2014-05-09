@@ -50,7 +50,7 @@ public class LoggingListener {
       if (event.isPre())
          return;
 
-      log.infof("Cache entry %s = %s added in cache %s", event.getKey(), event.getValue(), event.getCache());
+      log.infof("Cache entry %s added in cache %s", event.getKey(), event.getCache());
    }
 
    @CacheEntryModified

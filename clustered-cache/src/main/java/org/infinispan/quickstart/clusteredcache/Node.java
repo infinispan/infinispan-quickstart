@@ -23,17 +23,19 @@
 package org.infinispan.quickstart.clusteredcache;
 
 import org.infinispan.Cache;
-import org.infinispan.commons.logging.BasicLogFactory;
 import org.infinispan.configuration.cache.CacheMode;
 import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.configuration.global.GlobalConfigurationBuilder;
 import org.infinispan.manager.DefaultCacheManager;
 import org.infinispan.manager.EmbeddedCacheManager;
 import org.infinispan.quickstart.clusteredcache.util.LoggingListener;
+import org.infinispan.util.logging.BasicLogFactory;
 import org.jboss.logging.BasicLogger;
+import org.jboss.logging.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
@@ -41,7 +43,7 @@ import java.util.TreeSet;
 
 public class Node {
 
-   private static final BasicLogger log = BasicLogFactory.getLog(Node.class);
+   private static final BasicLogger log = Logger.getLogger(Node.class);
 
    private final boolean useXmlConfig;
    private final String cacheName;
@@ -119,11 +121,15 @@ public class Node {
       System.exit(0);
    }
 
+   /**
+    * {@link org.infinispan.Cache#entrySet()}
+    * @param cache
+    */
    private void printCacheContents(Cache<String, String> cache) {
       System.out.printf("Cache contents on node %s\n", cache.getAdvancedCache().getRpcManager().getAddress());
 
       ArrayList<Map.Entry<String, String>> entries = new ArrayList<Map.Entry<String, String>>(cache.entrySet());
-      entries.sort(new Comparator<Map.Entry<String, String>>() {
+      Collections.sort(entries, new Comparator<Map.Entry<String, String>>() {
          @Override
          public int compare(Map.Entry<String, String> o1, Map.Entry<String, String> o2) {
             return o1.getKey().compareTo(o2.getKey());
