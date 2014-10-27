@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is necessary if the deployment archive is constructed without a
+     manifest file with `org.infinispan` in its Dependencies section. If deploying
+     using Maven JBoss/Wildfly deploy plugin, the manifest with the correct
+     dependencies is generated at build time -->
+<jboss-deployment-structure>
+    <deployment>
+        <dependencies>
+            <module name="org.infinispan" />
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>
