@@ -55,6 +55,10 @@ refer to the [Getting Started Guide](https://docs.jboss.org/author/display/ISPN/
     * `mvn -Pdomain-distributed jboss-as:add-resource` for a distributed cache
 * To deploy the application use `mvn clean package jboss-as:deploy`
 
+### Use the Wildfly Maven plugin
+
+* To deploy the application use `mvn clean package wildfly:deploy`
+
 ### Quick testing data-grid in domain mode
 
 This quick start ships a .cli script in the root folder that automatically applies the AS7 container changes required to get the domain part of the quick start running. To run this script:
