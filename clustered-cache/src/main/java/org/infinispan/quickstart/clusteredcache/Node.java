@@ -29,7 +29,6 @@ import org.infinispan.configuration.global.GlobalConfigurationBuilder;
 import org.infinispan.manager.DefaultCacheManager;
 import org.infinispan.manager.EmbeddedCacheManager;
 import org.infinispan.quickstart.clusteredcache.util.LoggingListener;
-import org.infinispan.util.logging.BasicLogFactory;
 import org.jboss.logging.BasicLogger;
 import org.jboss.logging.Logger;
 
@@ -38,8 +37,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class Node {
 
@@ -62,16 +59,22 @@ public class Node {
       String nodeName = null;
 
       for (String arg : args) {
-         if ("-x".equals(arg)) {
-            useXmlConfig = true;
-         } else if ("-p".equals(arg)) {
-            useXmlConfig = false;
-         } else if ("-d".equals(arg)) {
-            cache = "dist";
-         } else if ("-r".equals(arg)) {
-            cache = "repl";
-         } else {
-            nodeName = arg;
+         switch (arg) {
+            case "-x":
+               useXmlConfig = true;
+               break;
+            case "-p":
+               useXmlConfig = false;
+               break;
+            case "-d":
+               cache = "dist";
+               break;
+            case "-r":
+               cache = "repl";
+               break;
+            default:
+               nodeName = arg;
+               break;
          }
       }
       new Node(useXmlConfig, cache, nodeName).run();
@@ -123,12 +126,11 @@ public class Node {
 
    /**
     * {@link org.infinispan.Cache#entrySet()}
-    * @param cache
     */
    private void printCacheContents(Cache<String, String> cache) {
       System.out.printf("Cache contents on node %s\n", cache.getAdvancedCache().getRpcManager().getAddress());
 
-      ArrayList<Map.Entry<String, String>> entries = new ArrayList<Map.Entry<String, String>>(cache.entrySet());
+      ArrayList<Map.Entry<String, String>> entries = new ArrayList<>(cache.entrySet());
       Collections.sort(entries, new Comparator<Map.Entry<String, String>>() {
          @Override
          public int compare(Map.Entry<String, String> o1, Map.Entry<String, String> o2) {
