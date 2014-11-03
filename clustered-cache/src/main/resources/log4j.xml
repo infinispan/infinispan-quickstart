@@ -19,7 +19,7 @@
   <appender name="FILE" class="org.apache.log4j.FileAppender">
     <!--<param name="BufferedIO" value="true"/>-->
     <!--<param name="BufferSize" value="262144"/>-->
-    <param name="File" value="/home/dan/Work/logs/test.log"/>
+    <param name="File" value="test.log"/>
     <param name="Append" value="false"/>
 
     <param name="Threshold" value="TRACE"/>
