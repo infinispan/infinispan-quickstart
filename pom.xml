@@ -6,13 +6,14 @@
    <version>7.0.0-SNAPSHOT</version>
    <packaging>pom</packaging>
    <name>Infinispan Quickstart Parent</name>
-   
+
    <modules>
       <module>embedded-cache</module>
       <module>clustered-cache</module>
       <module>jboss-as7</module>
       <module>cdi</module>
       <module>rapid-stock-market</module>
+      <module>jcache</module>
    </modules>
-   
+
 </project>
