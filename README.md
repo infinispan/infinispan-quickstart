@@ -1,7 +1,7 @@
 !!! WARNING !!! 
 ===============
 
-This quickstarts are here only for historical reasons and are no longer maintained. Please use to [Infinispan tutorials]( http://infinispan.org/tutorials/)
+This quickstarts are here only for historical reasons and are no longer maintained. Please refer to [Infinispan tutorials]( http://infinispan.org/tutorials/)
 
 Infinispan Quickstarts 
 ======================
