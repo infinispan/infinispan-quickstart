@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd"
+    version="2.5">
+
+    <display-name>JCacheDemoServlet Application</display-name>
+    
+    <description>A simple demo webapp to show how to embedded a JCache container, in this case 
+    Infinispan, into a simple Servlet environment. This is usefull if appplication runs on Servlet
+    Container such as Tomcat or even JEE app server, as the integration of JCache with JEE is not yet
+    defined.
+    </description>
+
+    <servlet>
+        <servlet-name>JCacheDemoServlet</servlet-name>
+        <servlet-class>org.infinispan.quickstart.jcache.JCacheServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>JCacheDemoServlet</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>
