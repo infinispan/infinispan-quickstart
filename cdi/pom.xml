@@ -58,7 +58,7 @@
       <version.arquillian>1.0.0.CR5</version.arquillian>
       <version.javax.cache.api>1.0.0-PFD</version.javax.cache.api>
       <version.infinispan>6.0.1-SNAPSHOT</version.infinispan>
-      <version.junit>4.8.2</version.junit>
+      <version.junit>4.13.1</version.junit>
    </properties>
 
    <developers>
